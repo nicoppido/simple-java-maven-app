@@ -6,13 +6,6 @@ pipeline {
         }
     }
     stages {
-        stage('Read YAML file') {
-            steps {
-                script{ datas = readYaml (file: './jenkins/config.yml') }
-                echo datas.ear_file.deploy.toString()
-
-            }
-        }
         stage('Build') { 
             steps {
                 sh 'mvn -B -DskipTests clean package' 
