@@ -1,3 +1,3 @@
 @Library('pipeline-library-demo')_
 
-Pipeline()
+Pipeline('jenkins/config.yml');
