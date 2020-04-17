@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Check') {
             steps {
-                sh 'mvn -s settings.xml dependency:list'
                 sh 'mvn sonar:sonar'
             }
         }
