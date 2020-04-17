@@ -6,6 +6,11 @@ pipeline {
         }
     }
     stages {
+        stage('Check') {
+            steps {
+                sh 'mvn -s settings.xml dependency:list'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
