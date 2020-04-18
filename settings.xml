@@ -13,7 +13,7 @@
             </activation>
             <properties>
                 <!-- Enter your SonarQube instance URL here -->
-                <sonar.host.url>http://localhost:9000</sonar.host.url>
+                <sonar.host.url>http://192.168.70.128:9000</sonar.host.url>
             </properties>
         </profile>
      </profiles>
