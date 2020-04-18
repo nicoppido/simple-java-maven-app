@@ -4,15 +4,9 @@ pipeline {
     }
     environment {
         scannerHome = tool 'SonarQubeScanner'
+        mvnHome = tool 'Maven'
     }
     stages {
-        stage('Check') {
-             steps {
-                    withSonarQubeEnv('SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
-             }
-        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
@@ -27,6 +21,13 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
+        }
+        stage('Code Analysis') {
+             steps {
+                    withSonarQubeEnv('SonarQube') {
+                        sh "mvn sonar:sonar"
+                    }
+             }
         }
     }
 }
